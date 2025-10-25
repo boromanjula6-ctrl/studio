@@ -73,6 +73,17 @@ export const DashboardClient: FC<DashboardClientProps> = ({
     });
   };
 
+  const handleUnlockAll = () => {
+    setApps(currentApps =>
+      currentApps.map(app => ({ ...app, locked: false }))
+    );
+    toast({
+      title: "All Apps Unlocked",
+      description: "All applications have been unlocked.",
+    });
+    setActiveProfileId(null);
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
       <div className="lg:col-span-2 space-y-6 lg:space-y-8">
@@ -81,7 +92,7 @@ export const DashboardClient: FC<DashboardClientProps> = ({
           activeProfileId={activeProfileId}
           onActivateProfile={handleActivateProfile}
         />
-        <AppGrid apps={apps} onToggleLock={handleToggleLock} />
+        <AppGrid apps={apps} onToggleLock={handleToggleLock} onUnlockAll={handleUnlockAll} />
       </div>
       <div className="lg:col-span-1 space-y-6 lg:space-y-8">
         <AiSuggestions apps={apps} onLockApps={handleLockApps} />

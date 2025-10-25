@@ -4,10 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Switch } from '@/components/ui/switch';
 import { Lock, Unlock, MessageCircle, Instagram, Twitter, Youtube, Image as ImageIcon, File, Banknote, Slack, Mail, Icon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '../ui/button';
 
 interface AppGridProps {
   apps: App[];
   onToggleLock: (appId: string) => void;
+  onUnlockAll: () => void;
 }
 
 const iconComponents: { [key: string]: Icon } = {
@@ -23,12 +25,15 @@ const iconComponents: { [key: string]: Icon } = {
 };
 
 
-export const AppGrid: FC<AppGridProps> = ({ apps, onToggleLock }) => {
+export const AppGrid: FC<AppGridProps> = ({ apps, onToggleLock, onUnlockAll }) => {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>App Lock</CardTitle>
-        <CardDescription>Toggle the switch to lock or unlock an application.</CardDescription>
+      <CardHeader className="flex flex-row items-start justify-between">
+        <div>
+          <CardTitle>App Lock</CardTitle>
+          <CardDescription>Toggle the switch to lock or unlock an application.</CardDescription>
+        </div>
+        <Button variant="outline" onClick={onUnlockAll}>Unlock All</Button>
       </CardHeader>
       <CardContent className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {apps.map(app => {
