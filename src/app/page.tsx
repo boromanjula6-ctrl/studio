@@ -3,6 +3,11 @@ import { Header } from '@/components/Header';
 import { initialApps, initialProfiles, initialIntruders } from '@/lib/data';
 
 export default function Home() {
+  const serializedIntruders = initialIntruders.map(intruder => ({
+    ...intruder,
+    timestamp: intruder.timestamp.toISOString(),
+  }));
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -10,7 +15,7 @@ export default function Home() {
         <DashboardClient
           initialApps={initialApps}
           initialProfiles={initialProfiles}
-          initialIntruders={initialIntruders}
+          initialIntruders={serializedIntruders.map(i => ({...i, timestamp: new Date(i.timestamp)}))}
         />
       </main>
     </div>

@@ -35,7 +35,7 @@ export const IntruderAlerts: FC<IntruderAlertsProps> = ({ intruders }) => {
                 <div className="flex-grow">
                   <p className="font-semibold">Unauthorized Attempt</p>
                   <p className="text-sm text-muted-foreground">
-                    {formatDistanceToNow(intruder.timestamp, { addSuffix: true })}
+                    {formatDistanceToNow(new Date(intruder.timestamp), { addSuffix: true })}
                   </p>
                 </div>
               </li>

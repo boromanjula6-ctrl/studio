@@ -24,6 +24,6 @@ const photoUrl = intruderImage?.imageUrl || "https://picsum.photos/seed/fallback
 const photoHint = intruderImage?.imageHint || "person";
 
 export const initialIntruders: Intruder[] = [
-  { id: '1', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), photoUrl, photoHint },
-  { id: '2', timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), photoUrl, photoHint },
+    { id: '1', timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), photoUrl, photoHint },
+    { id: '2', timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), photoUrl, photoHint },
 ];
